@@ -1,0 +1,12 @@
+[yamanashi_all]
+
+[yamanashi_all:children]
+nxos
+asa
+
+[nxos]
+N9kv-1 ansible_host=192.0.2.17
+N9kv-2 ansible_host=192.0.2.26
+
+[asa]
+ASAv ansible_host=192.0.2.15

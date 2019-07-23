@@ -1,0 +1,74 @@
+{
+  "class": "org.batfish.question.edges.EdgesQuestion",
+  "differential": false,
+  "edgeType": "${edgeType}",
+  "initial": "${initial}",
+  "instance": {
+    "description": "Returns different types of network adjacencies in a snapshot.",
+    "instanceName": "__edges_2990dafb-6b8b-4bd6-94a8-316d6120d2f7",
+    "longDescription": "Lists network adjacencies of different types (e.g., Layer 3, BGP, OSPF) in the form of edges. This question is deprecated in favor of specific edges question such as bgpEdges and layer3Edges.",
+    "orderedVariableNames": [
+      "edgeType",
+      "nodes",
+      "remoteNodes",
+      "initial"
+    ],
+    "tags": [
+      "topology"
+    ],
+    "variables": {
+      "edgeType": {
+        "description": "Types of edges to include. Default is layer3.",
+        "displayName": "Edge Type",
+        "type": "string",
+        "value": "ospf",
+        "values": [
+          {
+            "name": "bgp"
+          },
+          {
+            "name": "eigrp"
+          },
+          {
+            "name": "ipsec"
+          },
+          {
+            "name": "isis"
+          },
+          {
+            "name": "layer1"
+          },
+          {
+            "name": "layer3"
+          },
+          {
+            "name": "ospf"
+          },
+          {
+            "name": "vxlan"
+          }
+        ]
+      },
+      "initial": {
+        "description": "Use the initial topology (pre-dataplane computation).",
+        "displayName": "Use Initial Topology",
+        "type": "boolean",
+        "value": false
+      },
+      "nodes": {
+        "description": "Include edges whose first node matches this name or regex.",
+        "displayName": "Nodes",
+        "type": "nodeSpec",
+        "value": "n9kv-1"
+      },
+      "remoteNodes": {
+        "description": "Include edges whose second node matches this name or regex.",
+        "displayName": "Remote Nodes",
+        "type": "nodeSpec",
+        "value": ".*"
+      }
+    }
+  },
+  "nodes": "${nodes}",
+  "remoteNodes": "${remoteNodes}"
+}

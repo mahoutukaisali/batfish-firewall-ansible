@@ -1,0 +1,1 @@
+{"answerElements":[{"class":"org.batfish.datamodel.answers.InitInfoAnswerElement","parseStatus":{"configs/N9k-v1.cfg":"PASSED","configs/after_summary_asa.cfg":"PARTIALLY_UNRECOGNIZED","configs/before_summary_asa.cfg":"PARTIALLY_UNRECOGNIZED","configs/ciscoasa.cfg":"PARTIALLY_UNRECOGNIZED"}}],"status":"SUCCESS","summary":{"numFailed":0,"numPassed":0,"numResults":0}}
