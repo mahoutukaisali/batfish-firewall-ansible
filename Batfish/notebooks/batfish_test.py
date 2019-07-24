@@ -68,7 +68,7 @@ address_list = extract_interface(parsed)
 ip_owners_ans = bfq.ipOwners().answer()
 #print(ip_owners_ans)
 json_frame = ip_owners_ans.frame()
-print(json_frame.to_json())
+#print(json_frame.to_json())
 
 for address in address_list:
     ip_flow = HeaderConstraints(srcIps=address)
@@ -76,6 +76,6 @@ for address in address_list:
     answer = bfq.testFilters(headers=ip_flow,
                              nodes='before_summary_asa',
                              filters="SPLIT-ACL").answer()
-    #show(answer.frame())
-    #print(answer.to_json())
+    show = answer.frame()
+    print(show.to_json())
 
