@@ -1,0 +1,1 @@
+{"id":"topology-current","testrigName":"current","nodes":[{"id":"node-firewall","name":"firewall","type":"SWITCH"},{"id":"node-rtr-with-acl","name":"rtr-with-acl","type":"SWITCH"}]}

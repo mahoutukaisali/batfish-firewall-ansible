@@ -1,0 +1,12 @@
+{
+  "class": "org.batfish.question.initialization.FileParseStatusQuestion",
+  "differential": false,
+  "instance": {
+    "description": "Displays file parse status.",
+    "instanceName": "__fileParseStatus_ac80d50d-73a9-4ccf-820c-2f1a558dea26",
+    "longDescription": "For each file in a snapshot, returns the host(s) that were produced by the file and the parse status: pass, fail, partially parsed.",
+    "tags": [
+      "initialization"
+    ]
+  }
+}
