@@ -19,7 +19,7 @@ from pybatfish.datamodel import *
 load_questions()
 
 # Initialize a network and a snapshot
-bf_set_network("network-example-filters")
+bf_set_network("test")
 
 SNAPSHOT_NAME = "mycurrent"
 SNAPSHOT_PATH = "networks/example-filters/mycurrent"

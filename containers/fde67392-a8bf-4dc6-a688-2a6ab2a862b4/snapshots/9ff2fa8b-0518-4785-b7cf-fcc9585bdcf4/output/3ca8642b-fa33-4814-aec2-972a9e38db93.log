@@ -1,0 +1,73 @@
+
+*** READING DEVICE CONFIGURATION FILES ***
+Reading: "/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/input/configs/ASA_after_acl_summary.cfg"
+Reading: "/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/input/configs/ciscoasa.cfg"
+Reading: "/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/input/configs/after_summary_asa.cfg"
+Reading: "/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/input/configs/N9kv-2.cfg"
+Reading: "/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/input/configs/before_summary_asa.cfg"
+Reading: "/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/input/configs/N9kv-1.cfg"
+Reading: "/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/input/configs/ASA_before_acl_summary.cfg"
+Snapshot 9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4 in network fde67392-a8bf-4dc6-a688-2a6ab2a862b4 has total number of network configs:7
+*** SERIALIZING VENDOR CONFIGURATION STRUCTURES ***
+Time taken for this task: 0.057 seconds
+
+*** DESERIALIZING VENDOR CONFIGURATION STRUCTURES ***
+Reading and unzipping: org.batfish.datamodel.GenericConfigObject 'ciscoasa' from /data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/vendor/ciscoasa
+Reading and unzipping: org.batfish.datamodel.GenericConfigObject 'asa_after_acl_summary' from /data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/vendor/asa_after_acl_summary
+Reading and unzipping: org.batfish.datamodel.GenericConfigObject 'after_summary_asa' from /data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/vendor/after_summary_asa
+Reading and unzipping: org.batfish.datamodel.GenericConfigObject 'n9kv-2' from /data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/vendor/n9kv-2
+ ...OK
+ ...OK
+ ...OK
+Reading and unzipping: org.batfish.datamodel.GenericConfigObject 'asa_before_acl_summary' from /data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/vendor/asa_before_acl_summary
+ ...OK
+Reading and unzipping: org.batfish.datamodel.GenericConfigObject 'n9kv-1' from /data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/vendor/n9kv-1
+ ...OK
+ ...OK
+Reading and unzipping: org.batfish.datamodel.GenericConfigObject 'before_summary_asa' from /data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/vendor/before_summary_asa
+ ...OK
+Time taken for this task: 0.031 seconds
+
+*** CONVERTING VENDOR CONFIGURATIONS TO INDEPENDENT FORMAT ***
+Processing: "n9kv-2" ...OK
+Job terminated successfully with result: [n9kv-2] after elapsed time: 00:00:00.00 - 1/7 (14.3%) complete
+Processing: "n9kv-1" ...OK
+Job terminated successfully with result: [n9kv-1] after elapsed time: 00:00:00.00 - 2/7 (28.6%) complete
+Processing: "after_summary_asa" ...OK
+Job terminated successfully with result: [after_summary_asa] after elapsed time: 00:00:00.00 - 3/7 (42.9%) complete
+Processing: "before_summary_asa" ...OK
+Job terminated successfully with result: [before_summary_asa] after elapsed time: 00:00:00.00 - 4/7 (57.1%) complete
+Processing: "asa_before_acl_summary" ...OK
+Job terminated successfully with result: [asa_before_acl_summary] after elapsed time: 00:00:00.00 - 5/7 (71.4%) complete
+Processing: "asa_after_acl_summary" ...OK
+Job terminated successfully with result: [asa_after_acl_summary] after elapsed time: 00:00:00.00 - 6/7 (85.7%) complete
+Processing: "ciscoasa" ...OK
+Job terminated successfully with result: [ciscoasa] after elapsed time: 00:00:00.00 - 7/7 (100.0%) complete
+Time taken for this task: 0.012 seconds
+
+*** SERIALIZING 7 VENDOR-INDEPENDENT CONFIGURATION STRUCTURES FOR SNAPSHOT 9FF2FA8B-0518-4785-B7CF-FCC9585BDCF4***
+Loading configurations for NetworkSnapshot{network=fde67392-a8bf-4dc6-a688-2a6ab2a862b4, snapshot=9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4}
+Loading configurations for NetworkSnapshot{network=fde67392-a8bf-4dc6-a688-2a6ab2a862b4, snapshot=9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4}, cache miss
+*** DESERIALIZING VENDOR-INDEPENDENT CONFIGURATION STRUCTURES ***
+Reading org.batfish.datamodel.Configuration 'asa_after_acl_summary' from '/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/indep/asa_after_acl_summary'
+Reading org.batfish.datamodel.Configuration 'after_summary_asa' from '/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/indep/after_summary_asa'
+Reading org.batfish.datamodel.Configuration 'n9kv-2' from '/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/indep/n9kv-2'
+Reading org.batfish.datamodel.Configuration 'ciscoasa' from '/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/indep/ciscoasa'
+Reading org.batfish.datamodel.Configuration 'asa_before_acl_summary' from '/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/indep/asa_before_acl_summary'
+Reading org.batfish.datamodel.Configuration 'before_summary_asa' from '/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/indep/before_summary_asa'
+Reading org.batfish.datamodel.Configuration 'n9kv-1' from '/data/containers/fde67392-a8bf-4dc6-a688-2a6ab2a862b4/snapshots/9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4/output/indep/n9kv-1'
+Loaded configurations for NetworkSnapshot{network=fde67392-a8bf-4dc6-a688-2a6ab2a862b4, snapshot=9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4} off diskLoading configurations for NetworkSnapshot{network=fde67392-a8bf-4dc6-a688-2a6ab2a862b4, snapshot=9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4}
+Loading configurations for NetworkSnapshot{network=fde67392-a8bf-4dc6-a688-2a6ab2a862b4, snapshot=9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4}
+Loading configurations for NetworkSnapshot{network=fde67392-a8bf-4dc6-a688-2a6ab2a862b4, snapshot=9ff2fa8b-0518-4785-b7cf-fcc9585bdcf4}
+{
+  "class" : "org.batfish.datamodel.answers.InitInfoAnswerElement",
+  "parseStatus" : {
+    "configs/ASA_after_acl_summary.cfg" : "PARTIALLY_UNRECOGNIZED",
+    "configs/ASA_before_acl_summary.cfg" : "PARTIALLY_UNRECOGNIZED",
+    "configs/N9kv-1.cfg" : "PARTIALLY_UNRECOGNIZED",
+    "configs/N9kv-2.cfg" : "PARTIALLY_UNRECOGNIZED",
+    "configs/after_summary_asa.cfg" : "PARTIALLY_UNRECOGNIZED",
+    "configs/before_summary_asa.cfg" : "PARTIALLY_UNRECOGNIZED",
+    "configs/ciscoasa.cfg" : "PARTIALLY_UNRECOGNIZED"
+  }
+}{"answerElements":[{"class":"org.batfish.datamodel.answers.InitInfoAnswerElement","parseStatus":{"configs/ASA_after_acl_summary.cfg":"PARTIALLY_UNRECOGNIZED","configs/ASA_before_acl_summary.cfg":"PARTIALLY_UNRECOGNIZED","configs/N9kv-1.cfg":"PARTIALLY_UNRECOGNIZED","configs/N9kv-2.cfg":"PARTIALLY_UNRECOGNIZED","configs/after_summary_asa.cfg":"PARTIALLY_UNRECOGNIZED","configs/before_summary_asa.cfg":"PARTIALLY_UNRECOGNIZED","configs/ciscoasa.cfg":"PARTIALLY_UNRECOGNIZED"}}],"status":"SUCCESS","summary":{"numFailed":0,"numPassed":0,"numResults":0}}

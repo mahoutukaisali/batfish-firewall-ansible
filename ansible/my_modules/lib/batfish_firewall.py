@@ -3,10 +3,13 @@
 # pylint: disable=C0111,E0611,E0401
 
 # LISA GO (@LisaGo)
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {'metadata_version': '1.1', 'status': ['preview'], 'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = r'''
 ---
 module: file_compare
 version_added: "2.8"
@@ -33,13 +36,23 @@ options:
   acl_name:
     description:
       - ACL name which is the target ACL name
-"""
+'''
 
-EXAMPLES = r"""
-"""
+EXAMPLES = r'''
+commands:
+  description: Show the command sent.
+  returned: always
+  type: list
+  sample: ["ping vrf prod 10.40.40.40 count 20 source loopback0"]
+'''
 
-RETURN = """
-"""
+RETURN = '''
+commands:
+  description: Show the command sent.
+  returned: always
+  type: list
+  sample: ["ping vrf prod 10.40.40.40 count 20 source loopback0"]
+'''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.pycompat24 import get_exception
 from ansible.module_utils._text import to_bytes, to_native
@@ -49,10 +62,13 @@ def main():
   module = AnsibleModule(
     # not checking because of daisy chain to file module
     argument_spec = dict(
-        src = dict(required=False),
+        snapshot_name = dict(required=True),
+        snapshot_path = dict(required=True),
+        network_name = dict(required=True),
+        src = dict(required=True),
         dest = dict(required=False),
         protocol = dict(required=False),
-        condition = dict(required=False),
+        condition = dict(required=True),
         node = dict(required=True),
         acl_name = dict(required=True)
     ),
