@@ -67,7 +67,7 @@ def main():
         network_name = dict(required=True),
         src = dict(required=True),
         dest = dict(required=False),
-        protocol = dict(required=False),
+        application = dict(required=False),
         condition = dict(required=True),
         node = dict(required=True),
         acl_name = dict(required=True)
@@ -79,4 +79,4 @@ def main():
   module.exit_json(changed=False)
 
 if __name__ == '__main__':
-    main()
+  main()
