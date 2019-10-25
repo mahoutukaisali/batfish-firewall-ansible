@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
-  
+
   tasks:
     - name: test
       batfish_firewall:
         network_name: network-example-filters
         snapshot_name: mycurrent
-        snapshot_path: /Users/lisago/python/project/Batfish/Batfish-ansible/Batfish/notebooks/networks/example-filters/mycurrent
+        snapshot_path: /Users/lisago/python3/network_with_python/Batfish/Batfish/notebooks/networks/example-filters/mycurrent
         src: 10.20.0.0
         dest: 2.2.2.2
         acl_name: SPLIT-ACL
