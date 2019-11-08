@@ -1,0 +1,3 @@
+src,dest,port,node
+172.20.0.2,192.168.1.1,443,ciscoasa
+172.20.0.3,10.0.0.1,80,ciscoasa

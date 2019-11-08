@@ -8,7 +8,9 @@
         snapshot_name: mycurrent
         snapshot_path: /Users/lisago/python3/network_with_python/Batfish/Batfish/notebooks/networks/example-filters/mycurrent
         src: 10.20.0.0
-        dest: 2.2.2.2
+        dest:
+          - 2.2.2.2
+          - 3.3.3.3
         acl_name: SPLIT-ACL
         node: 'before_summary_asa'
         condition: permit
