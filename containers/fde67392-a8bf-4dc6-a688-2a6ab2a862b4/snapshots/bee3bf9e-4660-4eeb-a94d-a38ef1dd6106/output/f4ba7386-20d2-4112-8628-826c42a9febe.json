@@ -1,1 +1,0 @@
-{"answerElements":[{"class":"org.batfish.datamodel.answers.InitInfoAnswerElement","parseStatus":{"configs/ASA_acl2.cfg":"PARTIALLY_UNRECOGNIZED","configs/N9Kv-1.cfg":"PASSED","configs/N9Kv-2.cfg":"PASSED"}}],"status":"SUCCESS","summary":{"numFailed":0,"numPassed":0,"numResults":0}}
