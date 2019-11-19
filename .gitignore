@@ -1,3 +1,5 @@
 .vscode
 containers/
-Batfish/notebooks/networks
+Batfish/
+pybatfish/
+.gitignore
