@@ -47,7 +47,11 @@ commands:
 '''
 
 RETURN = '''
-
+commands:
+  description: Show the command sent.
+  returned: always
+  type: list
+  sample: ["ping vrf prod 10.40.40.40 count 20 source loopback0"]
 '''
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.pycompat24 import get_exception
@@ -60,13 +64,8 @@ def main():
     argument_spec = dict(
         snapshot_name = dict(required=False),
         snapshot_path = dict(required=True),
-        network_name = dict(required=True),
-        src = dict(required=True),
-        dest = dict(required=False),
-        application = dict(required=False),
-        condition = dict(required=True),
-        node = dict(required=True),
-        acl_name = dict(required=True)
+        network_name = dict(required=False),
+        csv_file_path = dict(required=True)
     ),
     add_file_common_args=True,
     supports_check_mode=False,

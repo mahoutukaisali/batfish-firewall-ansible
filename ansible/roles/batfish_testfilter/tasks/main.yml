@@ -1,0 +1,8 @@
+---
+- name: test
+  batfish_testfilter:
+    #network_name: network-example-filters
+    snapshot_name: mycurrent
+    snapshot_path: "{{ lookup('ENV', 'PWD') + '/roles/' + role_name + '/files/' + 'snapshot/mycurrent'}}"
+    csv_file_path: "{{ lookup('ENV', 'PWD') + '/roles/' + role_name + '/files/' + 'acl_test.csv'}}"
+  register: result
