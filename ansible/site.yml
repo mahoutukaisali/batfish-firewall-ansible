@@ -4,13 +4,13 @@
   tasks:
     - name: test
       batfish_firewall:
-        #network_name: network-example-filters
-        #snapshot_name: mycurrent
+        network_name: network-example-filters
+        snapshot_name: mycurrent
         snapshot_path: snapshot
         src: 10.20.0.0
-          #- 10.30.0.1
+          #cannot specify multiple configs like - 10.30.0.1
         dest: 2.2.2.2
-          #- 1.1.1.1
+          #cannot specify multiple configs like - 1.1.1.1
         acl_name: SPLIT-ACL
         node: 'ciscoasa'
         condition: permit

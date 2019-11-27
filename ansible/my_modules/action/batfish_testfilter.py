@@ -37,8 +37,7 @@ import json
 import sys
 import re
 import csv
-#textfsmのパスをnotebookに渡す
-sys.path.append('/Users/lisago/python/ansible/venv/lib/python3.7/site-packages')
+
 import textfsm
 from pybatfish.client.commands import *
 from pybatfish.question.question import load_questions, list_questions
