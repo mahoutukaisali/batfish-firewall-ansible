@@ -14,17 +14,6 @@
       #  condition: permit
       #register: result
 
-    #- name: test
-    #  batfish_testfilter:
-    #    snapshot_name: mycurrent
-    #    snapshot_path: snapshot
-    #    network_name: network-example-filters
-    #    csv_file_path:
-##
-    #- name:
-    #  debug:
-    #    msg: "{{ result }}"
-
     - import_role:
         name: batfish_testfilter
 
