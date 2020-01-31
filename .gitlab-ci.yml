@@ -10,15 +10,23 @@ lint ansible:
   # before_script is reserved keywords
   before_script:
     - source ~/envs/pyats_pyenv/bin/activate
+
+  # 実行されるファイルはlintにかける
   script:
     - ansible-lint site.yml
+    - ansible-lint roles/acl_test/tasks/main.yml
+    - ansible-lint roles/configure/tasks/main.yml
 
 configuration:
   stage: configuration
+  before_script:
+    - source ~/envs/pyats_pyenv/bin/activate
   script: ansible-playbook -e ROLE_NAME=configure site.yml
 
 configuration test:
   stage: run-test
+  before_script:
+    - source ~/envs/pyats_pyenv/bin/activate
   script: ansible-playbook -e ROLE_NAME=acl_test site.yml
 
 # 本番環境で実行(?)
