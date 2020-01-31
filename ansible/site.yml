@@ -2,23 +2,28 @@
 - hosts: localhost
 
   tasks:
-    - name: test
-      batfish_firewall:
-        network_name: network-example-filters
-        snapshot_name: mycurrent
-        snapshot_path: snapshot
-        src: 10.20.0.0
-          #cannot specify multiple configs like - 10.30.0.1
-        dest: 2.2.2.2
-          #cannot specify multiple configs like - 1.1.1.1
-        acl_name: SPLIT-ACL
-        node: 'ciscoasa'
-        condition: permit
-      register: result
-#
-    - name:
-      debug:
-        msg: "{{ result }}"
+    #- name: test
+      #batfish_firewall:
+      #  network_name: network-example-filters
+      #  snapshot_name: mycurrent
+      #  snapshot_path: snapshot
+      #  src: 10.20.0.0
+      #  dest: 2.2.2.2
+      #  acl_name: SPLIT-ACL
+      #  node: 'ciscoasa'
+      #  condition: permit
+      #register: result
+
+    #- name: test
+    #  batfish_testfilter:
+    #    snapshot_name: mycurrent
+    #    snapshot_path: snapshot
+    #    network_name: network-example-filters
+    #    csv_file_path:
+##
+    #- name:
+    #  debug:
+    #    msg: "{{ result }}"
 
     - import_role:
         name: batfish_testfilter
