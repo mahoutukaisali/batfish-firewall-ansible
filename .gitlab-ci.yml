@@ -1,0 +1,21 @@
+stages:
+  - lint-ansible
+  #- run-test
+  #- deploy
+
+lint ansible:
+  stage: lint-ansible
+  # Enable to python env for using ansible
+  # before_script is reserved keywords
+  before_script:
+    - source ~/pyats_pyenv/bin/activate
+  script:
+    - ansible-lint site.yml
+
+# PingTest is the name of this test
+#PingTest:
+#  stage: run-test
+#  script:
+#    - python pyats-ios-sample/connectivity_check.py --testbed pyats-ios-sample/pyats_ios_example.yaml
+#  only:
+#    - master
