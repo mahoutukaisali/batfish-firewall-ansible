@@ -8,7 +8,7 @@ lint ansible:
   # Enable to python env for using ansible
   # before_script is reserved keywords
   before_script:
-    - source ~/pyats_pyenv/bin/activate
+    - source ~/env/pyats_pyenv/bin/activate
   script:
     - ansible-lint site.yml
 
