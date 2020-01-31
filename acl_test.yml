@@ -1,8 +1,5 @@
 ---
-- hosts: r1
-  gather_facts: no
-  become: yes
-  connection: network_cli
+- hosts: localhost
 
   tasks:
     #- name: test
@@ -16,11 +13,8 @@
       #  node: 'ciscoasa'
       #  condition: permit
       #register: result
+
     - import_role:
-        name: "{{ ROLE_NAME }}"
-
-    #- import_role:
-    #    name: acl_test
-
+        name: batfish_testfilter
 
 

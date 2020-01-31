@@ -1,0 +1,42 @@
+---
+# tasks file for configure
+- name: Take snapshot before configure
+  ios_command:
+    commands:
+      - show run
+  register: sh_run_result
+
+- name: Touch snapshot directory
+  file:
+    path: "{{ lookup('ENV', 'PWD') + '/roles/' + role_name + '/files/snapshot/configs/' }}"
+    state: directory
+
+- name: Copy run result into snapshot
+  copy:
+    dest: "{{ lookup('ENV', 'PWD') + '/roles/' + role_name + '/files/snapshot/configs/' + 'before_config_' + inventory_hostname + '.cfg' }}"
+    content: "{{ sh_run_result.stdout[0] }}"
+
+- name: 全く同じACLが存在しない場合に限り、ACL設定を導入する
+  ios_config:
+    lines:
+      #- 10 deny 172.20.0.24 0.0.0.255
+      - access-list 100 deny ip 172.20.0.24 0.0.0.255 any
+      - access-list 101 permit ip any any
+    parents: ip access-list extended test1
+    before: no ip access-list extended test
+    match: exact
+
+
+#- name: configure unsummarized access-list
+#  asa_acl:
+#    lines:
+#      - access-list SPLIT-ACL standard permit 10.20.0.0 255.255.255.0
+#      - access-list SPLIT-ACL remark Warren, NJ
+#      - access-list SPLIT-ACL standard permit 10.21.0.0 255.255.255.0
+#      - access-list SPLIT-ACL standard deny 10.22.0.0 255.255.255.0
+#      - access-list SPLIT-ACL remark Chicago
+#      - access-list SPLIT-ACL standard permit 10.23.0.0 255.255.255.0
+#      - access-list SPLIT-ACL standard permit 10.24.0.0 255.255.255.0
+#      - access-list SPLIT-ACL standard permit 10.25.0.0 255.255.255.0
+#      - access-list SPLIT-ACL remark Chicago
+#      - access-list SPLIT-ACL standard permit 10.26.0.0 255.255.255.0

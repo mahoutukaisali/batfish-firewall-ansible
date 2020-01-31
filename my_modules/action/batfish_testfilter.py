@@ -118,10 +118,17 @@ class ActionModule(_ActionModule):
                 result['msg'] = 'node parameter is required.'
                 return result
 
-            if acl == '':
-                result['failed'] = True
-                result['msg'] = 'acl parameter is required.'
-                return result
+            if acl == '' or acl == None:
+                ip_flow = HeaderConstraints(srcIps=src)
+
+                answer = bfq.testFilters(headers=ip_flow,
+                                         nodes=node).answer()
+                show = answer.frame()
+                answer = show.to_json()
+                json_answer = json.loads(answer)
+                json_answer["Test_id"] = test_id
+                json_answer["Intend_condition"] = intend_condition
+                answer_list.append(json_answer)
 
             if dest != '' and application != '':
 

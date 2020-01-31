@@ -1,21 +1,29 @@
 stages:
   - lint-ansible
-  #- run-test
-  #- deploy
+  - configuration
+  - run-test
+  - deploy
 
 lint ansible:
   stage: lint-ansible
   # Enable to python env for using ansible
   # before_script is reserved keywords
   before_script:
-    - source ~/env/pyats_pyenv/bin/activate
+    - source ~/envs/pyats_pyenv/bin/activate
   script:
     - ansible-lint site.yml
 
-# PingTest is the name of this test
-#PingTest:
-#  stage: run-test
-#  script:
-#    - python pyats-ios-sample/connectivity_check.py --testbed pyats-ios-sample/pyats_ios_example.yaml
-#  only:
-#    - master
+configuration:
+  stage: configuration
+  script: ansible-playbook -e ROLE_NAME=configure site.yml
+
+configuration test:
+  stage: run-test
+  script: ansible-playbook -e ROLE_NAME=acl_test site.yml
+
+# 本番環境で実行(?)
+deploy:
+  stage: deploy
+  script: ansible-playbook site.yml
+  when: manual
+
