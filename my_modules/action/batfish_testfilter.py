@@ -27,19 +27,14 @@ __metaclass__ = type
 
 from ansible.plugins.action.normal import ActionModule as _ActionModule
 from ansible.module_utils._text import to_text
-from ansible.module_utils.six.moves.urllib.parse import urlsplit
-from ansible.module_utils.network.common.config import NetworkConfig
 from ansible.errors import AnsibleError
 
 import json
-import sys
 import csv
 
-import textfsm
 from pybatfish.client.commands import *
 from pybatfish.question.question import load_questions, list_questions
 from pybatfish.question import bfq
-from pybatfish.question import *
 from pybatfish.datamodel import *
 
 
@@ -84,22 +79,25 @@ class ActionModule(_ActionModule):
             bf_init_snapshot(snapshot_path, overwrite=True)
 
         for c in csv_file_list:
-            intend_condition = c.get('intend_condition')
+            expect_condition = c.get('expect_condition')
             test_id = c.get('test_id')
             src = c.get('src')
             dest = c.get('dest')
             acl = c.get('acl_name')
             node = c.get('node')
             application = c.get('application')
+            src_int = c.get('src_int')
+            dest_int = c.get('dest_int')
 
-            if intend_condition == '' or intend_condition == None:
+
+            if expect_condition == '' or expect_condition == None:
                 result['failed'] = True
-                result['msg'] = 'intend_condition parameter is required.'
+                result['msg'] = 'expect_condition parameter is required.'
                 return result
 
-            if intend_condition != 'deny' and intend_condition != 'permit':
+            if expect_condition != 'deny' and expect_condition != 'permit':
                 result['failed'] = True
-                result['msg'] = 'intend_condition parameter should be permit or deny. '
+                result['msg'] = 'expect_condition parameter should be permit or deny. '
                 return result
 
             if test_id == '' or test_id == None:
@@ -118,6 +116,11 @@ class ActionModule(_ActionModule):
                 result['msg'] = 'node parameter is required.'
                 return result
 
+            if src_int != '' and node == '':
+                result['failed'] = True
+                result['msg'] = 'node must be specified if you want to test src_int.'
+                return result
+
             if acl == '' or acl == None:
                 ip_flow = HeaderConstraints(srcIps=src)
 
@@ -127,7 +130,7 @@ class ActionModule(_ActionModule):
                 answer = show.to_json()
                 json_answer = json.loads(answer)
                 json_answer["Test_id"] = test_id
-                json_answer["Intend_condition"] = intend_condition
+                json_answer["expect_condition"] = expect_condition
                 answer_list.append(json_answer)
 
             if dest != '' and application != '':
@@ -142,9 +145,10 @@ class ActionModule(_ActionModule):
                 answer = show.to_json()
                 json_answer = json.loads(answer)
                 json_answer["Test_id"] = test_id
-                json_answer["Intend_condition"] = intend_condition
+                json_answer["expect_condition"] = expect_condition
                 answer_list.append(json_answer)
 
+            # 一つ上の条件が一致した場合は以下セクションを読み込む必要がないのでelifを使う
             elif dest != '' and application == '':
                 ip_flow = HeaderConstraints(srcIps=src,
                                             dstIps=dest)
@@ -155,10 +159,10 @@ class ActionModule(_ActionModule):
                 answer = show.to_json()
                 json_answer = json.loads(answer)
                 json_answer["Test_id"] = test_id
-                json_answer["Intend_condition"] = intend_condition
+                json_answer["expect_condition"] = expect_condition
                 answer_list.append(json_answer)
 
-            elif application != '' and dest == '':
+            elif dest == '' and application != '':
                 ip_flow = HeaderConstraints(srcIps=src,
                                             applications=application)
                 answer = bfq.testFilters(headers=ip_flow,
@@ -168,8 +172,45 @@ class ActionModule(_ActionModule):
                 answer = show.to_json()
                 json_answer = json.loads(answer)
                 json_answer["Test_id"] = test_id
-                json_answer["Intend_condition"] = intend_condition
+                json_answer["expect_condition"] = expect_condition
                 answer_list.append(json_answer)
+
+            # あるノードのintに着信したパケットが出力intとして指定したintで
+            # どのように処理されるかテストする
+            # nodeの指定がない場合はエラーになるよう上で実装済
+            #
+            # ある着信がdeny or permitをテストしたい時のセクション
+
+            #ノードとintを正確に指定しても動作しないので保留
+
+            #if src_int != '' and dest_int == '' and application == '' and dest == '':
+            #    flow = HeaderConstraints(srcIps=src)
+            #    answer = bfq.testFilters(headers=flow,
+            #             startLocation="@enter(" + node + "[" + src_int + "])",
+            #             filters="@out(" + dest_int + ")").answer()
+#
+            #    show = answer.frame()
+            #    answer = show.to_json()
+            #    json_answer = json.loads(answer)
+            #    json_answer["Test_id"] = test_id
+            #    json_answer["expect_condition"] = expect_condition
+            #    answer_list.append(json_answer)
+
+            #if src_int != '' and dest_int != '' and application != '' and dest != '' and application != '':
+            #    flow = HeaderConstraints(srcIps=src,
+            #                  dstIps=dest,
+            #                  applications=application)
+            #    answer = bfq.testFilters(headers=flow,
+            #             startLocation="@enter(" + node + "[" + src_int + "])",
+            #             filters="@out(" + dest_int + ")").answer()
+#
+            #    show = answer.frame()
+            #    answer = show.to_json()
+            #    json_answer = json.loads(answer)
+            #    json_answer["Test_id"] = test_id
+            #    json_answer["expect_condition"] = expect_condition
+            #    answer_list.append(json_answer)
+
 
         result['batfish_result'] = answer_list
 
@@ -177,10 +218,10 @@ class ActionModule(_ActionModule):
         for answer in answer_list:
             action = answer['Action']
             action_num = action["0"]
-            condition = answer["Intend_condition"]
+            condition = answer["expect_condition"]
             test_id = answer["Test_id"]
 
-            # Batfishが出す結果(DENY or PERMIT)とintend_conditionがマッチしなければFAIL
+            # Batfishが出す結果(DENY or PERMIT)とexpect_conditionがマッチしなければFAIL
             if action_num != condition.upper():
                 result['failed'] = True
                 result_list.append('test_id {0} is {1}.'.format(test_id, FAIL))

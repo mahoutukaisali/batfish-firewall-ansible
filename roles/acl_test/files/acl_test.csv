@@ -1,2 +1,3 @@
-test_id,src,dest,acl_name,node,application,intend_condition
-1,172.20.0.24,,,r1,,deny
+test_id,src,dest,acl_name,node,application,expect_condition,src_int,dest_int
+1,172.20.0.24,,,r1,dns,deny,,,
+

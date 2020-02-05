@@ -1,20 +1,20 @@
 ---
 # tasks file for configure
-- name: Take snapshot before configure
-  ios_command:
-    commands:
-      - show run
-  register: sh_run_result
+#- name: Take snapshot before configure
+#  ios_command:
+#    commands:
+#      - show run
+#  register: sh_run_result
 
 - name: Touch snapshot directory
   file:
     path: "{{ lookup('ENV', 'PWD') + '/roles/' + role_name + '/files/snapshot/configs/' }}"
     state: directory
 
-- name: Copy run result into snapshot
-  copy:
-    dest: "{{ lookup('ENV', 'PWD') + '/roles/' + role_name + '/files/snapshot/configs/' + 'after_config_' + inventory_hostname + '.cfg' }}"
-    content: "{{ sh_run_result.stdout[0] }}"
+#- name: Copy run result into snapshot
+#  copy:
+#    dest: "{{ lookup('ENV', 'PWD') + '/roles/' + role_name + '/files/snapshot/configs/' + 'after_config_' + inventory_hostname + '.cfg' }}"
+#    content: "{{ sh_run_result.stdout[0] }}"
 
 - name: test
   batfish_testfilter:
